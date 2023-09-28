@@ -75,6 +75,7 @@ crashlytics-build.properties
 /[Aa]ssets/WX-WASM-SDK-V2/*
 /[Aa]ssets/Res/*
 /[Aa]ssets/WebGLTemplates/*
+/[Aa]ssets/Plugins/*
 /.idea/*
 /ProjectSettings/*
 /Packages/*
