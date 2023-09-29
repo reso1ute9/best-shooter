@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
             gameState = value;
             switch (gameState) {
                 case GameState.Menu:
+                    DuckManager.Instance.CreatMenuDuck();
                     break;
                 case GameState.ReadyGo:
                     break;

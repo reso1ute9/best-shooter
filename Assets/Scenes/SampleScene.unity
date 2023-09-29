@@ -214,6 +214,8 @@ GameObject:
   m_Component:
   - component: {fileID: 541348366}
   - component: {fileID: 541348367}
+  - component: {fileID: 541348369}
+  - component: {fileID: 541348368}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -247,6 +249,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e307d4f0dc50344a372709e105c1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &541348368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541348365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ec9c28db02a454a8e76aaf8738ba37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckPrefab: {fileID: 682139525667580201, guid: 204e61972f1e77a439c302ed1aeac444,
+    type: 3}
+--- !u!114 &541348369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541348365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ece4043a1712d4f87735fc871556a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckLayerConfigs:
+  - sortingLayer: Duck1
+    poxY: -8.5
+  - sortingLayer: Duck2
+    poxY: -12.43
+  - sortingLayer: Duck3
+    poxY: -13.5
+  menuDuckPosition: {x: 0, y: -5.52}
+  duckMoveHRnage: {x: -25, y: 25}
+  duckMoveSpeed: 8
+  duckConfigs:
+  - sprite: {fileID: 21300000, guid: 18c2df46ac4f29946922ca083a1ce569, type: 3}
+  - sprite: {fileID: 21300000, guid: f0e27efd22a0b5545abb28cdfe75059e, type: 3}
+  - sprite: {fileID: 21300000, guid: 893a7654b902640418cc0cef10c6409b, type: 3}
+  - sprite: {fileID: 21300000, guid: 6296599344b74c54ba1ba2036325a10a, type: 3}
 --- !u!1 &749440997
 GameObject:
   m_ObjectHideFlags: 0
