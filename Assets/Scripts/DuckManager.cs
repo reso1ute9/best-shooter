@@ -33,4 +33,11 @@ public class DuckManager : MonoBehaviour {
         duckController.gameObject.SetActive(true);
         return duckController;
     }
+    
+    // 回收鸭子资源
+    public void RecycleDuck(DuckController duckController) {
+        duckController.gameObject.SetActive(false);
+        duckPool.Push(duckController);
+        currentDuckList.Remove(duckController);
+    }
 }

@@ -12,9 +12,10 @@ public class DuckController : MonoBehaviour {
     public SpriteRenderer duckSpriteRenderer;
 
     private bool isGameDuck;
-    private bool isDead = false;
     private bool isTargetDuck;
     private List<Vector2> physicsShape = new List<Vector2>();
+    
+    public bool isDead = false;
     
     private void Init(DuckConfig duckConfig) {
         isDead = false;
@@ -54,5 +55,25 @@ public class DuckController : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, targetPositionY, 0);
     }
     
+    // 菜单鸭子死亡
+    public void Dead() {
+        isDead = true;
+        // 播放死亡动画
+        animation.Play("Hit");
+        // 播放菜单鸭子退出效果
+        StopAllCoroutines();
+        StartCoroutine(DoExit());
+    }
+
+    private IEnumerator DoExit() {
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.duckGoBakClip);
+        float targetPosY = transform.position.y - 7;
+        while (transform.position.y > targetPosY) {
+            yield return null;
+            transform.position -= new Vector3(0, Time.deltaTime * ConfigManager.Instance.duckMoveSpeed, 0);
+        }
+        // 回收鸭子资源
+        DuckManager.Instance.RecycleDuck(this);
+    }
     #endregion
 }

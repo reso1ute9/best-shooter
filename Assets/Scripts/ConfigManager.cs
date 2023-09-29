@@ -12,6 +12,7 @@ public class ConfigManager : MonoBehaviour {
     public Vector2 duckMoveHRnage = new Vector2(-25, 25);
     public float duckMoveSpeed = 8;
     public List<DuckConfig> duckConfigs = new List<DuckConfig>();
+    public Vector3 gunOffset = new Vector3(0, 6.4f, 0);
     
     private void Awake() {
         Instance = this;
