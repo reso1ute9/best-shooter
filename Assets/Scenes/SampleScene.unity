@@ -292,6 +292,8 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 893a7654b902640418cc0cef10c6409b, type: 3}
   - sprite: {fileID: 21300000, guid: 6296599344b74c54ba1ba2036325a10a, type: 3}
   gunOffset: {x: 0, y: 6.4, z: 0}
+  readyGoAnimationTime: 2
+  maxGameTime: 60
 --- !u!1 &749440997
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,8 +565,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5205021121860898256, guid: 205dd70795f9d05449dfa052ddefc6b0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205dd70795f9d05449dfa052ddefc6b0, type: 3}
 --- !u!1 &964238191
 GameObject:
@@ -693,31 +694,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!111 &1336447868 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 5205021122650300763, guid: 205dd70795f9d05449dfa052ddefc6b0,
-    type: 3}
-  m_PrefabInstance: {fileID: 953144433}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1420933839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5205021121860898271, guid: 205dd70795f9d05449dfa052ddefc6b0,
-    type: 3}
-  m_PrefabInstance: {fileID: 953144433}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1420933840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420933839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ac54a61bd70b3c4a9644f8c94715522, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readyGoAnimation: {fileID: 1336447868}
 --- !u!1001 &1430107022
 PrefabInstance:
   m_ObjectHideFlags: 0

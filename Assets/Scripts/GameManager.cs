@@ -15,8 +15,13 @@ public enum GameState {
 public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
+    private int currentScore;           // 当前分数
+    private float gameTime;             // 游戏时间
+    private float shootTime;            // 射击冷却时间
+    
     public Animation gunAnimation;
-
+    public bool superMode = false;
+    
     private void Awake() {
         Instance = this;
     }
@@ -35,8 +40,17 @@ public class GameManager : MonoBehaviour {
                 case GameState.ReadyGo:
                     UIManager.Instance.EnterReadyGo();
                     AudioManager.Instance.PlayOneShot(AudioManager.Instance.readyGoClip);
+                    // 等动画播放完毕进入游戏
+                    Invoke(nameof(StartGame), ConfigManager.Instance.readyGoAnimationTime);
                     break;
                 case GameState.Game:
+                    currentScore = 0;
+                    gameTime = ConfigManager.Instance.maxGameTime;
+                    UIManager.Instance.EnterGame();
+                    // 更新默认分数
+                    UIManager.Instance.UpdateScore(0);
+                    // 进入游戏
+                    DuckManager.Instance.EnterGame();
                     break;
                 case GameState.GameOver:
                     break;
@@ -69,6 +83,10 @@ public class GameManager : MonoBehaviour {
         AudioManager.Instance.PlayOneShot(AudioManager.Instance.showSceneClip);
         yield return new WaitForSeconds(1.5f);
         GameState = GameState.Menu;
+    }
+
+    private void StartGame() {
+        GameState = GameState.Game;
     }
 
     private DuckController RayCastDuck() {
