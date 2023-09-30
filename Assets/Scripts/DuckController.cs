@@ -12,8 +12,8 @@ public class DuckController : MonoBehaviour {
     public Transform duckTargetIcon;
     public SpriteRenderer duckSpriteRenderer;
 
-    private bool isGameDuck;
-    private bool isTargetDuck;
+    public bool isGameDuck;
+    public bool isTargetDuck;
     private List<Vector2> physicsShape = new List<Vector2>();
     private Vector2 generatePoint;
 

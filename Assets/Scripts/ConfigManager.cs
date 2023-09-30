@@ -18,6 +18,8 @@ public class ConfigManager : MonoBehaviour {
     public float superModeDuckInterval = 0.2f;
     public float normalModeDuckInterval = 1.0f;
     public Vector3 gunOffset = new Vector3(0, 6.4f, 0);
+    public float shootCd = 1.0f;
+    public float superModeShootCd = 0.5f;
     public float readyGoAnimationTime = 2.0f;
     public float maxGameTime = 60;
     [Range(0f, 1.0f)]

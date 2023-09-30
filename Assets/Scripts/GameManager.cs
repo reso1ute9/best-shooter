@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
             gameState = value;
             switch (gameState) {
                 case GameState.Menu:
+                    superMode = false;
                     DuckManager.Instance.CreatMenuDuck();
                     UIManager.Instance.EnterMenu();
                     break;
@@ -71,6 +72,36 @@ public class GameManager : MonoBehaviour {
             case GameState.ReadyGo:
                 break;
             case GameState.Game:
+                if (gameTime <= 0) {
+                    GameState = GameState.GameOver;
+                    return;
+                }
+                // 更新游戏时间
+                gameTime -= Time.deltaTime;
+                UIManager.Instance.UpdateTime((int)gameTime);
+                // 更新射击cd
+                shootTime -= Time.deltaTime;
+                float shootCd = superMode
+                    ? (shootTime / ConfigManager.Instance.superModeShootCd)
+                    : (shootTime / ConfigManager.Instance.shootCd);
+                UIManager.Instance.UpdateGunCd(shootCd);
+                // 检查当前是否进行射击
+                if (shootCd <= 0 && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+                    shootTime = shootCd;
+                    DuckController duckController = RayCastDuck();
+                    if (duckController != null && duckController.isDead == false) {
+                        // 更新游戏分数
+                        currentScore += duckController.isTargetDuck ? 5 : 1;
+                        duckController.Dead();
+                        UIManager.Instance.UpdateScore(currentScore);
+                        // TODO: 屏幕在不同模式下/不同平台上震动
+                    } else {
+                        if (superMode == false) {
+                            AudioManager.Instance.PlayOneShot(AudioManager.Instance.unHitDuckClip);
+                        }
+                        GunShoot(Input.GetTouch(0).position);
+                    }
+                }
                 break;
             case GameState.GameOver:
                 break;

@@ -11,9 +11,11 @@ public class UIManager : MonoBehaviour {
     public Text scoreText;
     public Text timeText;
     public Image gunCdMask;
+    public Button superModeButton;
     
     private void Awake() {
         Instance = this;
+        superModeButton.onClick.AddListener(SuperModeButtonClick);
         EnterMenu();
     }
 
@@ -36,8 +38,24 @@ public class UIManager : MonoBehaviour {
         timeText.gameObject.SetActive(true);
         gunCdMask.transform.parent.gameObject.SetActive(true);
     }
-
+    
+    // 更新时间
+    public void UpdateTime(int time) {
+        timeText.text = time.ToString();
+    }
+    
+    // 更新分数
     public void UpdateScore(int score) {
         scoreText.text = score.ToString();
+    }
+    
+    // 更新武器CD
+    public void UpdateGunCd(float cd) {
+        gunCdMask.fillAmount = cd;
+    }
+    
+    // 开启超级模式
+    private void SuperModeButtonClick() {
+        // TODO: 添加广告SDK
     }
 }

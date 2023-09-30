@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunAnimation: {fileID: 1430107023}
+  superMode: 0
 --- !u!114 &541348368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,16 +285,46 @@ MonoBehaviour:
   - sortingLayer: Duck3
     poxY: -13.5
   menuDuckPosition: {x: 0, y: -5.52}
-  duckMoveHRnage: {x: -25, y: 25}
+  duckMoveXRnage: {x: -25, y: 25}
+  duckMoveYRange: 8
   duckMoveSpeed: 8
   duckConfigs:
   - sprite: {fileID: 21300000, guid: 18c2df46ac4f29946922ca083a1ce569, type: 3}
   - sprite: {fileID: 21300000, guid: f0e27efd22a0b5545abb28cdfe75059e, type: 3}
   - sprite: {fileID: 21300000, guid: 893a7654b902640418cc0cef10c6409b, type: 3}
   - sprite: {fileID: 21300000, guid: 6296599344b74c54ba1ba2036325a10a, type: 3}
+  superModeDuckInterval: 0.2
+  normalModeDuckInterval: 1
   gunOffset: {x: 0, y: 6.4, z: 0}
+  shootCd: 1
+  superModeShootCd: 0.5
   readyGoAnimationTime: 2
   maxGameTime: 60
+  targetDuckProbability: 0.5
+  generateDuckCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &749440997
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +595,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205021122279588489, guid: 205dd70795f9d05449dfa052ddefc6b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205dd70795f9d05449dfa052ddefc6b0, type: 3}
@@ -838,3 +874,69 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b26b8940891f740a17a94c6d0b0f96, type: 3}
+--- !u!1 &2050612089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050612092}
+  - component: {fileID: 2050612091}
+  - component: {fileID: 2050612090}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2050612090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050612089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &2050612091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050612089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &2050612092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050612089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
