@@ -10,7 +10,7 @@ public class ConfigManager : MonoBehaviour {
     
     public List<DuckLayerConfig> duckLayerConfigs = new List<DuckLayerConfig>();
     public Vector2 menuDuckPosition = new Vector2(0, -5.52f);
-    public Vector2 duckMoveXRnage = new Vector2(-25, 25);
+    public Vector2 duckMoveXRnage = new Vector2(-30, 30);
     public float duckMoveYRange = 8;
     public float duckMoveSpeed = 8;
     public List<DuckConfig> duckConfigs = new List<DuckConfig>();

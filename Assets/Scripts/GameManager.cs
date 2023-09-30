@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,9 +16,9 @@ public enum GameState {
 public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
-    private int currentScore;           // 当前分数
-    private float gameTime;             // 游戏时间
-    private float shootTime;            // 射击冷却时间
+    private int currentScore;               // 当前分数
+    private float gameTime;                 // 游戏时间
+    private float shootTime = 0;            // 射击冷却时间
     
     public Animation gunAnimation;
     public bool superMode = false;
@@ -47,9 +48,11 @@ public class GameManager : MonoBehaviour {
                 case GameState.Game:
                     currentScore = 0;
                     gameTime = ConfigManager.Instance.maxGameTime;
-                    UIManager.Instance.EnterGame();
-                    // 更新默认分数
+                    // 更新默认时间/分数/cd后进入游戏
+                    UIManager.Instance.UpdateTime((int)gameTime);
                     UIManager.Instance.UpdateScore(0);
+                    UIManager.Instance.UpdateGunCd(0);
+                    UIManager.Instance.EnterGame();
                     // 进入游戏
                     DuckManager.Instance.EnterGame();
                     break;
@@ -73,6 +76,8 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.Game:
                 if (gameTime <= 0) {
+                    gameTime = 0;
+                    UIManager.Instance.UpdateTime((int)gameTime);
                     GameState = GameState.GameOver;
                     return;
                 }
@@ -87,12 +92,13 @@ public class GameManager : MonoBehaviour {
                 UIManager.Instance.UpdateGunCd(shootCd);
                 // 检查当前是否进行射击
                 if (shootCd <= 0 && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-                    shootTime = shootCd;
+                    shootTime = ConfigManager.Instance.shootCd;
                     DuckController duckController = RayCastDuck();
                     if (duckController != null && duckController.isDead == false) {
                         // 更新游戏分数
                         currentScore += duckController.isTargetDuck ? 5 : 1;
                         duckController.Dead();
+                        GunShoot(duckController);
                         UIManager.Instance.UpdateScore(currentScore);
                         // TODO: 屏幕在不同模式下/不同平台上震动
                     } else {
@@ -104,6 +110,8 @@ public class GameManager : MonoBehaviour {
                 }
                 break;
             case GameState.GameOver:
+                DuckManager.Instance.StopGame();
+                UIManager.Instance.GameOver();
                 break;
         }
     }

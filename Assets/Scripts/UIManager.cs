@@ -12,10 +12,19 @@ public class UIManager : MonoBehaviour {
     public Text timeText;
     public Image gunCdMask;
     public Button superModeButton;
+
+    public Transform gameOverPanel;
+    public Button gameOverShareButton;
+    public Button gameOverCloseButton;
+    public Text gameOverScore;
+    
+    
     
     private void Awake() {
         Instance = this;
         superModeButton.onClick.AddListener(SuperModeButtonClick);
+        gameOverShareButton.onClick.AddListener(GameOverShareButtonClick);
+        gameOverCloseButton.onClick.AddListener(GameOverCloseButtonClick);
         EnterMenu();
     }
 
@@ -25,9 +34,11 @@ public class UIManager : MonoBehaviour {
         scoreText.transform.parent.gameObject.SetActive(false);
         timeText.gameObject.SetActive(false);
         gunCdMask.transform.parent.gameObject.SetActive(false);
+        gameOverPanel.gameObject.SetActive(false);
     }
 
     public void EnterReadyGo() {
+        superModeButton.gameObject.SetActive(false);
         readyGoAnimation.gameObject.SetActive(true);
         readyGoAnimation.Play("ReadyGo");
     }
@@ -50,12 +61,27 @@ public class UIManager : MonoBehaviour {
     }
     
     // 更新武器CD
-    public void UpdateGunCd(float cd) {
-        gunCdMask.fillAmount = cd;
+    public void UpdateGunCd(float gunCd) {
+        gunCdMask.fillAmount = gunCd;
     }
     
     // 开启超级模式
     private void SuperModeButtonClick() {
         // TODO: 添加广告SDK
+    }
+
+    public void GameOver() {
+        gameOverScore.text = scoreText.text;
+        gameOverPanel.gameObject.SetActive(true);
+    }
+    
+    // 游戏结束分享按钮
+    private void GameOverShareButtonClick() {
+        // TODO: 需要调用平台SDK
+    }
+    
+    // 游戏结束关闭按钮
+    private void GameOverCloseButtonClick() {
+        GameManager.Instance.GameState = GameState.Menu;
     }
 }

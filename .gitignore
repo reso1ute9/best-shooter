@@ -76,6 +76,8 @@ crashlytics-build.properties
 /[Aa]ssets/Res/*
 /[Aa]ssets/WebGLTemplates/*
 /[Aa]ssets/Plugins/*
+/IGOutput/*
+/TextToolDatas/*
 /.idea/*
 /ProjectSettings/*
 /Packages/*

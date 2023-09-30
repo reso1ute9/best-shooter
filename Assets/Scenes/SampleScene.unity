@@ -300,25 +300,25 @@ MonoBehaviour:
   superModeShootCd: 0.5
   readyGoAnimationTime: 2
   maxGameTime: 60
-  targetDuckProbability: 0.5
+  targetDuckProbability: 0.3
   generateDuckCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      time: 0.00022506714
+      value: 0.6257019
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      time: 0.98412275
+      value: 0.49948156
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -372,7 +372,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -596,11 +596,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5205021122279588489, guid: 205dd70795f9d05449dfa052ddefc6b0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205dd70795f9d05449dfa052ddefc6b0, type: 3}
 --- !u!1 &964238191
@@ -741,6 +736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587280074262779135, guid: 074ad5634e6890f4da45d487f5c3a019,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7345785599604024827, guid: 074ad5634e6890f4da45d487f5c3a019,
         type: 3}

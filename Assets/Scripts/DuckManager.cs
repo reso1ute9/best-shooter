@@ -19,7 +19,6 @@ public class DuckManager : MonoBehaviour {
         DuckController duckController = GetDuck();
         DuckConfig duckConfig = ConfigManager.Instance.GetRandomDuckConfig();
         duckController.InitMenuDuck(duckConfig, ConfigManager.Instance.menuDuckPosition);
-        
         currentDuckList.Add(duckController);
     }
     
@@ -42,8 +41,8 @@ public class DuckManager : MonoBehaviour {
         currentDuckList.Remove(duckController);
     }
 
-    public void CleanAllDuck() {
-        for (int i = 0; i < currentDuckList.Count; i++) {
+    private void CleanAllDuck() {
+        for (int i = currentDuckList.Count - 1; i >= 0; i--) {
             RecycleDuck(currentDuckList[i]);
         }
     }
@@ -73,7 +72,7 @@ public class DuckManager : MonoBehaviour {
         while (true) {
             yield return wiWaitForSeconds;
             currentTime += generateDuckInterval;
-            if (currentDuckList.Count < 15) {
+            if (currentDuckList.Count < 10) {
                 float randomValue = UnityEngine.Random.Range(0, 1f);
                 if (randomValue <
                     ConfigManager.Instance.generateDuckCurve.Evaluate(currentTime /
@@ -90,5 +89,13 @@ public class DuckManager : MonoBehaviour {
         DuckGenerateInfo duckGenerateInfo = ConfigManager.Instance.GetRandomDuckGenerateInfo();
         duckController.InitGameDuck(duckGenerateInfo);
         currentDuckList.Add(duckController);
+    }
+    
+    // 停止游戏
+    public void StopGame() {
+        // 停止生成鸭子逻辑
+        StopAllCoroutines();
+        // 回收目前所有鸭子
+        CleanAllDuck();
     }
 }

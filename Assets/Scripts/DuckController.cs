@@ -60,7 +60,7 @@ public class DuckController : MonoBehaviour {
         // 更新鸭子目标坐标X
         if (isLeft == true && transform.position.x <= TargetX) {
             TargetX = ConfigManager.Instance.GetRandomMovePointX();
-        } else if (isLeft == false && transform.position.x >= TargetY) {
+        } else if (isLeft == false && transform.position.x >= TargetX) {
             TargetX = ConfigManager.Instance.GetRandomMovePointX();
         }
         // 更新鸭子目标坐标Y
